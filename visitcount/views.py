@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.template import loader
 from django.http import HttpResponse
 
 from .models import VisitCounter
@@ -7,4 +8,11 @@ from .models import VisitCounter
 
 def show_number_of_visitors(request):
     record = VisitCounter.objects.all()[0]
-    return HttpResponse("Current = %d" % record.counter)
+    
+    template = loader.get_template('visitcount/counter.html')
+    
+    context = {
+        'counter' : record.counter
+        }
+    
+    return HttpResponse(template.render(context, request))
