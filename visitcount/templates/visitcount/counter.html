@@ -1,4 +1,9 @@
 <!DOCTYPE html>
 <html><body>
+
 <pre>count = {{ counter }}</pre>
+<form action="{% url 'visitcount:increment' %}" method="post"> {% csrf_token %}
+  <input type="submit" value="increment" />
+</form>
+
 </body></html>
