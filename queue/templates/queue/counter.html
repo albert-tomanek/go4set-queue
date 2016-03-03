@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html><body>
+
+<pre>You are client no. <b>{{ queue_start }}<b></pre>
+<form action="{% url 'queue:increment' %}" method="post"> {% csrf_token %}
+  <input type="submit" value="increment" />
+</form> 
+
+</body></html>

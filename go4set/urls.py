@@ -18,5 +18,5 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^visitcount/', include('visitcount.urls', namespace="visitcount"))
+    url(r'^queue/', include('queue.urls', namespace="queue"))
 ]
