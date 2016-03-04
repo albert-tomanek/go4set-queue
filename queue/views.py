@@ -7,7 +7,7 @@ from .models import Queue
 
 # Create your views here.
 
-def show_number_of_visitors(request):
+def client_view(request):
     record = Queue.objects.all()[0]
     
     template = loader.get_template('queue/counter.html')
@@ -18,12 +18,12 @@ def show_number_of_visitors(request):
     
     return HttpResponse(template.render(context, request))
 
-def increment_counter(request):
-    record = Queue.objects.all()[0]   # This is the valur from the database
+def increment_tail(request):
+    record = Queue.objects.all()[0]   # This is the value from the database
 
     record.tail += 1     # We add one to it,
     
     record.save()   # And then we save it.
     
     #
-    return HttpResponseRedirect( reverse('queue:number-of-visitors') )
+    return HttpResponseRedirect( reverse('queue:client_view') )

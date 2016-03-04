@@ -4,7 +4,7 @@ from . import views
 
 urlpatterns = [
     #ex /queue
-    url(r'^$', views.show_number_of_visitors, name='number-of-visitors'),
+    url(r'^$', views.client_view, name='client_view'),
     #ex /queue/increment
-    url(r'^increment$', views.increment_counter, name='increment')
+    url(r'^increment$', views.increment_tail, name='increment_tail')
     ]
