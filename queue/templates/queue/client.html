@@ -23,7 +23,7 @@
         </td>
       </tr>  
       <tr bgcolor="cyan">
-        <td>12</td>
+        <td>{{ queue_head }}</td>
       </tr>
     </table>
   </tr>
@@ -32,7 +32,7 @@
 <div />
 
 
-<form action="{% url 'queue:increment' %}" method="post"> {% csrf_token %}
+<form action="{% url 'queue:increment_tail' %}" method="post"> {% csrf_token %}
   <input type="submit" value="increment" />
 </form> 
 

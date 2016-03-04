@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head> <META http-equiv="Content-Type" content="text/html; charset=utf-8"> </head>
+
+<body>
+
+<div />
+<h3>Welcome to the CCCCC lunch queue system. </h3>
+<pre><i>You are in staff view.</i></pre>
+
+
+<table width="100%" bgcolor="#eeeeee">
+  <tr>
+    <td width="25%">
+      <pre> Queue head = </pre>
+    </td>
+    <td width="25%">
+      <h4> {{ queue_head }} </h4>
+    </td>
+    <td width="25%">
+      <form action="{% url 'queue:increment_head' %}" method="post"> {% csrf_token %}
+        <h3> <input type="submit" value="+" /> </h3>
+      </form> 
+    </td>
+  </tr>
+  <tr>
+    <td width="25%">
+      <pre> Queue tail = </pre>
+    </td>
+    <td width="25%">
+      <h4> {{ queue_tail }} </h4>
+    </td>
+  </tr>
+</table>
+
+<form action="{% url 'queue:reset' %}" method="post"> {% csrf_token %}
+  <input type="submit" value="RESET QUEUE" />
+</form> 
+
+<div />
+
+<!--
+<form action="{% url 'queue:increment_tail' %}" method="post"> {% csrf_token %}
+  <input type="submit" value="increment" />
+</form> 
+-->
+
+</body>
+</html>
