@@ -13,7 +13,7 @@ def show_number_of_visitors(request):
     template = loader.get_template('queue/counter.html')
     
     context = {
-        'queue_start' : record.queue_start
+        'queue_tail' : record.tail
         }
     
     return HttpResponse(template.render(context, request))
@@ -21,7 +21,7 @@ def show_number_of_visitors(request):
 def increment_counter(request):
     record = Queue.objects.all()[0]   # This is the valur from the database
 
-    record.queue_start += 1     # We add one to it,
+    record.tail += 1     # We add one to it,
     
     record.save()   # And then we save it.
     
