@@ -1,4 +1,5 @@
-from django.conf.urls import url
+from django.conf.urls import url, include
+from django.contrib.auth import views as auth_views
 
 from . import views
 
@@ -12,5 +13,5 @@ urlpatterns = [
     #ex /queue/increment_tail
     url(r'^increment_tail$', views.increment_tail, name='increment_tail'),
     #ex /queue/increment_tail
-    url(r'^reset$', views.reset, name='reset')
+    url(r'^reset$', views.reset, name='reset'),
     ]

@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.template import loader
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
+from django.contrib.auth.decorators import permission_required, login_required
 
 from .models import Queue
 
@@ -19,6 +20,8 @@ def client_view(request):
     
     return HttpResponse(template.render(context, request))
 
+#@permission_required('queue.can_admin')#, raise_exception=True)
+@login_required
 def staff_view(request):
     record = Queue.objects.all()[0]
     
