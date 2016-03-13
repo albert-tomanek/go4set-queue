@@ -24,13 +24,25 @@
     <table width="100%" bgcolor="#cccccc">
       <tr>      
         <td>
-          <p> When the number below is the same as your number, please go to the kitchen counter. </p>
-<!-- <table width="100%" bgcolor="cyan"> -->
+          {% if queue_position %}
+            <p> Number of people adead of you in the queue: </p>
+          {% else %}
+            <p> The queue is <b>{{ queue_length }}</b> people long. </p>
+          {% endif %}
         </td>
-      </tr>  
-      <tr bgcolor="cyan">
-        <td> <h4>{{ queue_head }}</h4></td>
       </tr>
+      {% if queue_position %}
+        <tr bgcolor="cyan">
+          <td> <h4>{{ distance_from_head }}</h4></td>
+        </tr>
+      {% endif %}
+    {% if distance_from_head < 4 %}
+      <tr>
+        <td>
+          <i> Please make your way to the canteen </i>
+        </td>
+      </tr>
+    {% endif %}
     </table>
   </tr>
 </table>

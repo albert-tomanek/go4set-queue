@@ -16,10 +16,14 @@ def client_view(request):
     queue_position = request.session['queue_position'] if ( 'queue_position' in request.session ) else None
     
     context = {
-        'queue_head' : record.head,
-        'queue_tail' : record.tail,
-
-        'queue_position' : queue_position  # Actually a cookie
+        'queue_head'   : record.head,
+        'queue_tail'   : record.tail,
+ 
+        'queue_length' : (record.tail - record.head),
+        
+        # Session-dependent
+        'distance_from_head' : (queue_position - record.head) if queue_position else None,
+        'queue_position'     : queue_position  # Actually a cookie
         }
     
     return HttpResponse(template.render(context, request))
