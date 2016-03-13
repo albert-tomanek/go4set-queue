@@ -63,6 +63,15 @@ def increment_tail(request):
     #
     return HttpResponseRedirect( reverse('queue:client_view') )
 
+def remove_from_queue(request):
+    record = Queue.objects.all()[0]   # This is the value from the database
+
+    request.session['queue_position'] = None
+    
+    #
+    return HttpResponseRedirect( reverse('queue:client_view') )
+
+
 def reset(request):
     record = Queue.objects.all()[0]   # This is the value from the database
 

@@ -49,14 +49,28 @@
 
 <div />
 
-
-<form action="{% url 'queue:increment_tail' %}" method="post"> {% csrf_token %}
-  <input type="submit" value="Give me a number"
-    {% if queue_position %}
-      disabled="disabled"
-    {% endif %}
-  />
-</form> 
+<table>
+  <tr>
+    <td>
+      <form action="{% url 'queue:increment_tail' %}" method="post"> {% csrf_token %}
+        <input type="submit" value="Give me a number"
+          {% if queue_position %}
+            disabled="disabled"
+          {% endif %}
+        />
+      </form>
+    </td>
+    <td>
+      <form action="{% url 'queue:remove_from_queue' %}" method="post"> {% csrf_token %}
+        <input type="submit" value="Remove from queue"
+          {% if not queue_position %}
+            disabled="disabled"
+          {% endif %}
+        />
+      </form>
+    </td>
+  </tr>
+</table>
 
 
 </body>
