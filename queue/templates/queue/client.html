@@ -1,4 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- Client page - coded by Miquel and Jeremy, edited by Albert -->
+
 <html>
 <head> <META http-equiv="Content-Type" content="text/html; charset=utf-8"> </head>
 
@@ -11,7 +13,11 @@
 <table width="100%" bgcolor="#eeeeee">
   <tr>
     <td>
-      Your number is : <h4>{{ queue_tail }}</h4>
+      {% if queue_position %}
+        Your number is : <h4>{{ queue_position }}</h4>
+      {% else %}
+        The end of the queue is at : {{ queue_tail }}
+      {% endif %}
     </td>
   </tr>
   <tr>
@@ -23,7 +29,7 @@
         </td>
       </tr>  
       <tr bgcolor="cyan">
-        <td>{{ queue_head }}</td>
+        <td> <h4>{{ queue_head }}</h4></td>
       </tr>
     </table>
   </tr>
@@ -33,7 +39,11 @@
 
 
 <form action="{% url 'queue:increment_tail' %}" method="post"> {% csrf_token %}
-  <input type="submit" value="Give me a number" />
+  <input type="submit" value="Give me a number"
+    {% if queue_position %}
+      disabled="disabled"
+    {% endif %}
+  />
 </form> 
 
 
