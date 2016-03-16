@@ -1,6 +1,6 @@
-- Server starts at boot
+x- Server starts at boot
 - QR code that sends us to /queue/
-- Website hosted on port 80 instead of 8080
-- Cookie that remembers every client.
-- Make a poster explaining the proces and how queue.wsgi works.
+#- Website hosted on port 80 instead of 8080
+X-Cookie that remembers every client.
+X- Make a poster explaining the proces and how queue.wsgi works.
 - Post it on GitHub so that the judges can see it.
